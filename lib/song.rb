@@ -11,8 +11,8 @@ class Song
     @name = name
     @artist = artist
     @genre = genre
-    genres
-    artists
+    @@genres << genre
+    @@artists << artist
   end
 
   def self.count
@@ -20,13 +20,11 @@ class Song
   end
 
   def self.genres
-    @@genres << :genre if @@genres.include?(:genre) == false
-    @@genres
+    @@genres.uniq!
   end
 
   def self.artists
-    @@artists << :artist if @@artists.include?(:artist) == false
-    @@artists
+    @@artists.uniq!
   end
 
   def self.genre_count
